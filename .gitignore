@@ -1,0 +1,17 @@
+# Dependencies and build outputs
+node_modules/
+dist/
+out/
+cache/
+
+# Keystore / Secrets / Passwords
+.env
+.env.*
+*.password
+.password*
+password.txt
+*secret*
+
+# IDE / System
+.DS_Store
+*.swp
