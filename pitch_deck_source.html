@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Backr Pitch Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+
+    @page {
+      size: 11in 6.1875in; /* 16:9 standard presentation slide */
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.45;
+    }
+
+    .slide {
+      width: 11in;
+      height: 6.1875in;
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+      padding: 2.75rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffff;
+    }
+
+    /* Bright modern backgrounds */
+    .bg-gradient-blue {
+      background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #eff6ff 100%);
+    }
+
+    .bg-gradient-warm {
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 60%, #f0fdf4 100%);
+    }
+
+    .bg-gradient-clean {
+      background: #ffffff;
+    }
+
+    /* Ambient decorative background glows */
+    .glow-top-right {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+
+    .glow-bottom-left {
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+
+    /* Header styles */
+    .slide-header {
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #2563eb;
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 0.6rem;
+    }
+
+    .slide-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    .slide-subtitle {
+      font-size: 1rem;
+      color: #64748b;
+      margin-top: 0.3rem;
+      font-weight: 500;
+    }
+
+    /* Content body */
+    .slide-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Grid cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.6rem;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-accent-blue {
+      border-top: 4px solid #2563eb;
+      background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+    }
+
+    .card-accent-emerald {
+      border-top: 4px solid #059669;
+      background: linear-gradient(180deg, #f6fdf9 0%, #ffffff 100%);
+    }
+
+    .card-accent-amber {
+      border-top: 4px solid #d97706;
+      background: linear-gradient(180deg, #fffcf5 0%, #ffffff 100%);
+    }
+
+    .card-accent-purple {
+      border-top: 4px solid #7c3aed;
+      background: linear-gradient(180deg, #faf7ff 0%, #ffffff 100%);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .icon-blue { background: #eff6ff; color: #2563eb; }
+    .icon-emerald { background: #ecfdf5; color: #059669; }
+    .icon-amber { background: #fffbeb; color: #d97706; }
+    .icon-rose { background: #fff1f2; color: #e11d48; }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* Highlight list inside cards */
+    .feature-list {
+      list-style: none;
+      margin-top: 0.75rem;
+    }
+
+    .feature-list li {
+      font-size: 0.84rem;
+      color: #334155;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .check-bullet {
+      color: #059669;
+      font-weight: 800;
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid #f1f5f9;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 600;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Cover Slide Specifics */
+    .cover-content {
+      margin: auto 0;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cover-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.6rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 1rem;
+    }
+
+    .cover-title span {
+      background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cover-subtitle {
+      font-size: 1.35rem;
+      color: #475569;
+      max-width: 750px;
+      font-weight: 500;
+      line-height: 1.45;
+      margin-bottom: 2rem;
+    }
+
+    .cover-metrics {
+      display: flex;
+      gap: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 2px solid #e2e8f0;
+    }
+
+    .metric-box h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    .metric-box p {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Steps / Process flow */
+    .step-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .step-number {
+      position: absolute;
+      top: -14px;
+      left: 1.5rem;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Code & Address pills */
+    .code-pill {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== SLIDE 1: COVER ==================== -->
+  <section class="slide bg-gradient-blue">
+    <div class="glow-top-right"></div>
+    <div class="glow-bottom-left"></div>
+
+    <div class="cover-content">
+      <div class="brand-badge">
+        <span>⚡ BOT TESTNET (CHAIN ID 968)</span>
+      </div>
+      <h1 class="cover-title">
+        Backr: Decentralized <span>All-or-Nothing</span> Crowdfunding
+      </h1>
+      <p class="cover-subtitle">
+        Trustless, fee-free capital formation for creators and communities on the BOT Network. Zero platform taxes, 100% onchain integrity.
+      </p>
+
+      <div class="cover-metrics">
+        <div class="metric-box">
+          <h4>0%</h4>
+          <p>Platform Fee</p>
+        </div>
+        <div class="metric-box">
+          <h4>100%</h4>
+          <p>Onchain Data</p>
+        </div>
+        <div class="metric-box">
+          <h4>100%</h4>
+          <p>Refund Guarantee</p>
+        </div>
+        <div class="metric-box">
+          <h4>16/16</h4>
+          <p>Pass Tests + Invariants</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Backr Protocol • Pitch Deck 2026</span>
+      <span>Verified Contract: 0x4EB9Ea45A18BE0fB34538Cdf4da80e1F5E360EB3</span>
+    </div>
+  </section>
+
+
+  <!-- ==================== SLIDE 2: THE PROBLEM ==================== -->
+  <section class="slide bg-gradient-warm">
+    <div class="glow-top-right"></div>
+
+    <div class="slide-header">
+      <div class="category-tag">The Problem</div>
+      <h2 class="slide-title">Legacy Crowdfunding is Broken</h2>
+      <p class="slide-subtitle">Centralized platforms exploit creators with exorbitant fees, opaque escrow, and custodial risks.</p>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-3">
+        <div class="card card-accent-amber">
+          <div>
+            <div class="card-icon icon-amber">💸</div>
+            <h3 class="card-title">Extortionate Fees</h3>
+            <p class="card-desc">Kickstarter & GoFundMe take 5%–8% in platform fees PLUS 3%–5% credit card fees, draining up to 12% of hard-earned funding before builders can even start.</p>
+          </div>
+          <ul class="feature-list">
+            <li><span style="color:#e11d48">✕</span> Up to 12% total deduction</li>
+            <li><span style="color:#e11d48">✕</span> Hidden currency conversion fees</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent-amber">
+          <div>
+            <div class="card-icon icon-rose">🔒</div>
+            <h3 class="card-title">Custodial Escrow Risk</h3>
+            <p class="card-desc">Funds are held in private corporate bank accounts. Accounts are frequently frozen, delayed, or cancelled due to bureaucratic audits or payment processor disputes.</p>
+          </div>
+          <ul class="feature-list">
+            <li><span style="color:#e11d48">✕</span> 14–30 day payout delays</li>
+            <li><span style="color:#e11d48">✕</span> Arbitrary fund freezing</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent-amber">
+          <div>
+            <div class="card-icon icon-blue">🌐</div>
+            <h3 class="card-title">Global Exclusion</h3>
+            <p class="card-desc">Over 1.4 billion unbanked people worldwide are blocked from pledging or creating campaigns due to regional banking restrictions and credit card barriers.</p>
+          </div>
+          <ul class="feature-list">
+            <li><span style="color:#e11d48">✕</span> Restricted to ~30 countries</li>
+            <li><span style="color:#e11d48">✕</span> High barrier to micro-pledges</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Backr Protocol • Market Landscape</span>
+      <span>Slide 02</span>
+    </div>
+  </section>
+
+
+  <!-- ==================== SLIDE 3: THE SOLUTION ==================== -->
+  <section class="slide bg-gradient-blue">
+    <div class="glow-bottom-left"></div>
+
+    <div class="slide-header">
+      <div class="category-tag">The Solution</div>
+      <h2 class="slide-title">Backr: Trustless, Direct & Fee-Free</h2>
+      <p class="slide-subtitle">A lean, autonomous smart contract that replaces corporate middlemen with verifiable onchain logic.</p>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-3">
+        <div class="card card-accent-blue">
+          <div>
+            <div class="card-icon icon-blue">🎯</div>
+            <h3 class="card-title">Strict All-or-Nothing</h3>
+            <p class="card-desc">Code guarantees that creators only receive funds if their target is met by the deadline. If the goal falls short by even 1 wei, every backer can claim 100% of their pledge back.</p>
+          </div>
+          <ul class="feature-list">
+            <li><span class="check-bullet">✓</span> Automated refunds for failed goals</li>
+            <li><span class="check-bullet">✓</span> Zero counterparty risk</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent-emerald">
+          <div>
+            <div class="card-icon icon-emerald">💎</div>
+            <h3 class="card-title">0% Platform Cut</h3>
+            <p class="card-desc">Backr charges zero fees. 100% of pledged native BOT tokens go straight to creators. No intermediary tax, no platform rent-seeking, only network gas fees.</p>
+          </div>
+          <ul class="feature-list">
+            <li><span class="check-bullet">✓</span> 100% funding retention</li>
+            <li><span class="check-bullet">✓</span> Overfunding fully supported</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent-purple">
+          <div>
+            <div class="card-icon icon-amber">🌍</div>
+            <h3 class="card-title">Permissionless Access</h3>
+            <p class="card-desc">Any creator worldwide can connect a Web3 wallet and launch a crowdfunding campaign in seconds. No KYC friction, no banking approvals, and instant settlement.</p>
+          </div>
+          <ul class="feature-list">
+            <li><span class="check-bullet">✓</span> Global participation on BOT</li>
+            <li><span class="check-bullet">✓</span> Instant pull-style withdrawals</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Backr Protocol • Value Proposition</span>
+      <span>Slide 03</span>
+    </div>
+  </section>
+
+
+  <!-- ==================== SLIDE 4: HOW IT WORKS ==================== -->
+  <section class="slide bg-gradient-clean">
+    <div class="slide-header">
+      <div class="category-tag">User Journey</div>
+      <h2 class="slide-title">How Backr Works in 3 Simple Steps</h2>
+      <p class="slide-subtitle">An elegant onchain workflow engineered for simplicity, transparency, and safety.</p>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-3">
+        <div class="step-card">
+          <div class="step-number">STEP 01</div>
+          <div class="card-icon icon-blue" style="margin-top:0.75rem;">✍️</div>
+          <h3 class="card-title">Launch Campaign</h3>
+          <p class="card-desc">Creator sets title (1–100 chars), description (1–1000 chars), funding goal in BOT, and deadline (1–90 days). Stored directly onchain in contract storage.</p>
+          <div style="margin-top: 1rem; font-size: 0.8rem; color: #64748b;">
+            • Instant ID generation<br>
+            • No IPFS or external hosting needed
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">STEP 02</div>
+          <div class="card-icon icon-emerald" style="margin-top:0.75rem;">💰</div>
+          <h3 class="card-title">Backers Pledge BOT</h3>
+          <p class="card-desc">Supporters send native BOT to the campaign before the deadline. Pledges accumulate onchain per backer and are held safely in contract escrow.</p>
+          <div style="margin-top: 1rem; font-size: 0.8rem; color: #64748b;">
+            • Multiple pledges accumulate<br>
+            • Overfunding encouraged
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">STEP 03</div>
+          <div class="card-icon icon-amber" style="margin-top:0.75rem;">⚡</div>
+          <h3 class="card-title">Trustless Settlement</h3>
+          <p class="card-desc">Once the deadline passes, the outcome resolves autonomously:</p>
+          <div style="margin-top: 0.75rem; font-size: 0.82rem; line-height: 1.5; color: #334155;">
+            <strong style="color: #059669;">Success (Goal Met):</strong> Creator withdraws 100% of funds.<br>
+            <strong style="color: #e11d48;">Failure (Goal Missed):</strong> Each backer claims full refund.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Backr Protocol • Protocol Mechanics</span>
+      <span>Slide 04</span>
+    </div>
+  </section>
+
+
+  <!-- ==================== SLIDE 5: ARCHITECTURE & SECURITY ==================== -->
+  <section class="slide bg-gradient-blue">
+    <div class="glow-top-right"></div>
+
+    <div class="slide-header">
+      <div class="category-tag">Architecture & Security</div>
+      <h2 class="slide-title">Built with Military-Grade Solidity Standards</h2>
+      <p class="slide-subtitle">Zero fluff, audited OpenZeppelin 5.x primitives, and exhaustive fuzz testing.</p>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title" style="display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#2563eb">🛡️</span> ReentrancyGuard & CEI Pattern
+          </h3>
+          <p class="card-desc">
+            All state transitions (marking campaigns withdrawn or zeroing backer pledge balances) occur <strong>before</strong> sending native BOT. Combined with OpenZeppelin <code>ReentrancyGuard</code>, reentrancy attacks are impossible.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title" style="display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#059669">📥</span> Pull-Payment Architecture
+          </h3>
+          <p class="card-desc">
+            Backr never loops over recipient arrays or pushes funds. Creators and backers independently pull their own funds. This prevents Denial-of-Service (DoS) and gas exhaustion vulnerabilities.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title" style="display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#d97706">🧪</span> Invariant Fuzzing Verified
+          </h3>
+          <p class="card-desc">
+            Tested using Foundry stateful invariant testing across <strong>128,000 calls and 256 runs</strong> with 0 reverts, formally proving that contract balance always equals active unwithdrawn pledges.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title" style="display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#7c3aed">⛓️</span> Zero External Dependencies
+          </h3>
+          <p class="card-desc">
+            All metadata (titles, descriptions, timestamps) resides 100% onchain as native strings. No IPFS pinning failure risk, no centralized indexing API dependency, no server maintenance.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Backr Protocol • Smart Contract Security</span>
+      <span>Slide 05</span>
+    </div>
+  </section>
+
+
+  <!-- ==================== SLIDE 6: MARKET & TRACTION ==================== -->
+  <section class="slide bg-gradient-warm">
+    <div class="slide-header">
+      <div class="category-tag">Traction & Market</div>
+      <h2 class="slide-title">Market Opportunity & Working DApp</h2>
+      <p class="slide-subtitle">A live product capturing the rapidly expanding Web3 crowdfunding & builder economy.</p>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2">
+        <!-- Left: Market Size -->
+        <div class="card card-accent-blue">
+          <h3 class="card-title">The Crowdfunding Opportunity</h3>
+          <p class="card-desc" style="margin-bottom: 1rem;">
+            The global crowdfunding market is currently \$17.5B and forecasted to exceed <strong>\$28 Billion by 2028</strong>.
+          </p>
+          <div style="background: #eff6ff; border-radius: 12px; padding: 1rem; margin-bottom: 0.75rem;">
+            <div style="font-weight: 700; color: #1d4ed8; font-size: 0.95rem;">Why BOT Network Wins</div>
+            <div style="font-size: 0.84rem; color: #475569; margin-top: 0.25rem;">
+              Negligible gas fees and sub-second finality allow micro-pledges (\$1 - \$10) that are impossible on Ethereum mainnet.
+            </div>
+          </div>
+          <ul class="feature-list">
+            <li><span class="check-bullet">✓</span> Hackathon teams & Web3 startups</li>
+            <li><span class="check-bullet">✓</span> Open source software & tool builders</li>
+            <li><span class="check-bullet">✓</span> Creator communities & DAO initiatives</li>
+          </ul>
+        </div>
+
+        <!-- Right: Live Deployment -->
+        <div class="card card-accent-emerald">
+          <h3 class="card-title">Live & Verified Deployment</h3>
+          <p class="card-desc" style="margin-bottom: 1rem;">
+            Backr is fully deployed, verified, and operational on the BOT Testnet.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.84rem;">
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+              <span style="color:#64748b">Network:</span>
+              <strong>BOT Testnet (Chain ID 968)</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+              <span style="color:#64748b">Contract:</span>
+              <span class="code-pill">0x4EB9...0EB3</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+              <span style="color:#64748b">Verification:</span>
+              <span style="color:#059669; font-weight:700;">Verified on BohrScan</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+              <span style="color:#64748b">Frontend:</span>
+              <strong>Vite + React + TS + viem</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color:#64748b">Test Suite:</span>
+              <strong>16/16 Passed (Unit + Invariants)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Backr Protocol • Ecosystem Fit</span>
+      <span>Slide 06</span>
+    </div>
+  </section>
+
+
+  <!-- ==================== SLIDE 7: ROADMAP ==================== -->
+  <section class="slide bg-gradient-clean">
+    <div class="slide-header">
+      <div class="category-tag">Vision & Roadmap</div>
+      <h2 class="slide-title">Strategic Growth & Feature Expansion</h2>
+      <p class="slide-subtitle">Phased execution to make Backr the premier capital formation hub on BOT.</p>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-4">
+        <div class="card card-accent-blue">
+          <div style="font-size:0.75rem; font-weight:800; color:#2563eb; margin-bottom:0.4rem;">PHASE 01 • DONE</div>
+          <h3 class="card-title" style="font-size:1.05rem;">Core Protocol</h3>
+          <p class="card-desc" style="font-size:0.82rem;">
+            • Backr core contract<br>
+            • 16 Foundry tests & invariant fuzzing<br>
+            • Deployed & verified on BOT Testnet<br>
+            • Responsive single-page DApp
+          </p>
+        </div>
+
+        <div class="card card-accent-emerald">
+          <div style="font-size:0.75rem; font-weight:800; color:#059669; margin-bottom:0.4rem;">PHASE 02 • Q1 2027</div>
+          <h3 class="card-title" style="font-size:1.05rem;">Mainnet & Grants</h3>
+          <p class="card-desc" style="font-size:0.82rem;">
+            • BOT Mainnet deployment<br>
+            • Ecosystem Creator Grant pilot<br>
+            • Social sharing & campaign widgets<br>
+            • Creator profiles & analytics
+          </p>
+        </div>
+
+        <div class="card card-accent-amber">
+          <div style="font-size:0.75rem; font-weight:800; color:#d97706; margin-bottom:0.4rem;">PHASE 03 • Q2 2027</div>
+          <h3 class="card-title" style="font-size:1.05rem;">Milestone Escrow</h3>
+          <p class="card-desc" style="font-size:0.82rem;">
+            • Multi-stage milestone tranches<br>
+            • Backer governance voting<br>
+            • Automated dispute resolution<br>
+            • Partial refund mechanisms
+          </p>
+        </div>
+
+        <div class="card card-accent-purple">
+          <div style="font-size:0.75rem; font-weight:800; color:#7c3aed; margin-bottom:0.4rem;">PHASE 04 • Q3 2027</div>
+          <h3 class="card-title" style="font-size:1.05rem;">Quadratic Pools</h3>
+          <p class="card-desc" style="font-size:0.82rem;">
+            • Quadratic funding matching rounds<br>
+            • Multi-token pledge support<br>
+            • DAO treasury co-funding hooks<br>
+            • Onchain creator reputation
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Backr Protocol • Future Trajectory</span>
+      <span>Slide 07</span>
+    </div>
+  </section>
+
+
+  <!-- ==================== SLIDE 8: SUMMARY & CTA ==================== -->
+  <section class="slide bg-gradient-blue">
+    <div class="glow-top-right"></div>
+    <div class="glow-bottom-left"></div>
+
+    <div class="slide-header" style="text-align: center; margin-bottom: 1.5rem;">
+      <div class="category-tag">Summary</div>
+      <h2 class="slide-title" style="font-size: 2.5rem;">Back the Future on BOT Network</h2>
+      <p class="slide-subtitle" style="font-size: 1.15rem;">Zero fees. 100% onchain. Guaranteed refunds. Instant settlement.</p>
+    </div>
+
+    <div class="slide-body" style="align-items: center;">
+      <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:18px; padding:2rem 3rem; max-width:820px; width:100%; box-shadow:0 12px 36px rgba(15,23,42,0.06); text-align:center;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem;">
+          Ready to Crowdfund Without Middlemen?
+        </h3>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left; margin-bottom: 1.5rem;">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.85rem 1rem;">
+            <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Verified Contract</div>
+            <div style="font-size: 0.82rem; font-weight: 700; color: #2563eb; margin-top: 0.2rem;">0x4EB9Ea45A18BE0fB34538Cdf4da80e1F5E360EB3</div>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.85rem 1rem;">
+            <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Block Explorer</div>
+            <div style="font-size: 0.82rem; font-weight: 700; color: #2563eb; margin-top: 0.2rem;">scan.bohr.life/address/0x4eb9...</div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.92rem; color: #475569; line-height: 1.5;">
+          Backr represents the simplest, purest crowdfunding primitive for the BOT ecosystem.<br>
+          Join us in empowering builders to fund what matters.
+        </p>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Backr Crowdfunding • End of Deck</span>
+      <span>https://scan.bohr.life/address/0x4eb9ea45a18be0fb34538cdf4da80e1f5e360eb3</span>
+    </div>
+  </section>
+
+</body>
+</html>
