@@ -1,0 +1,28 @@
+campaigns to create
+
+Clean Water for a Rural School
+
+Hundreds of students share a single water source that often breaks down. We’re raising funds to drill a new well, install a solar-powered pump, and add a filtration system so every child has safe drinking water at school.
+
+Help Maria Open Her Neighborhood Bakery
+
+Maria has been baking custom cakes from her home kitchen for three years. She needs funding for a commercial oven, a mixer, and a small storefront so she can serve more customers and hire two local young people.
+
+Plant 10,000 Trees for a Greener Community
+
+This volunteer-led reforestation project will plant native trees on degraded land to prevent erosion, restore shade, and create green jobs. Every $1 plants and maintains one tree for its first year, and donors receive photo updates.
+
+Free Coding Lab for Teens
+
+We want to build a free after-school coding lab with 20 refurbished laptops, reliable internet, and volunteer mentors. Teens aged 13 to 18 will learn web development and build real projects, with no fees and no experience required.
+
+
+
+
+
+Go to .env, there are 3 wallets there.
+send 0.1 bot each to the 3 wallets (from backr wallet in cast wallet)
+
+I need 8 transactions from each wallets, so use each wallet to make 8 transactions (each wallet should create one campaign above, should pledge other campaigns, maybe twice so to complete 8 transactions,, pledge small amounts since each wallet will have just 0.1 bot)
+
+lets go
