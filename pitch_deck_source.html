@@ -257,23 +257,22 @@
 
     .cover-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 3.6rem;
+      font-size: 3.5rem;
       font-weight: 800;
       color: #0f172a;
-      line-height: 1.08;
-      letter-spacing: -0.035em;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
       margin-bottom: 1rem;
     }
 
-    .cover-title span {
-      background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .cover-title .highlight {
+      color: #1d4ed8;
+      font-weight: 800;
     }
 
     .cover-subtitle {
       font-size: 1.35rem;
-      color: #475569;
+      color: #334155;
       max-width: 750px;
       font-weight: 500;
       line-height: 1.45;
@@ -291,13 +290,13 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.8rem;
       font-weight: 800;
-      color: #2563eb;
+      color: #1d4ed8;
     }
 
     .metric-box p {
       font-size: 0.8rem;
-      color: #64748b;
-      font-weight: 600;
+      color: #475569;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -344,11 +343,14 @@
     <div class="glow-bottom-left"></div>
 
     <div class="cover-content">
-      <div class="brand-badge">
-        <span>⚡ BOT TESTNET (CHAIN ID 968)</span>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+        <img src="frontend/public/backr.jpeg" alt="Backr Logo" style="width: 52px; height: 52px; border-radius: 12px; object-fit: cover; box-shadow: 0 4px 14px rgba(0,0,0,0.12); border: 1.5px solid #dbeafe;" />
+        <div class="brand-badge" style="margin-bottom: 0;">
+          <span>⚡ BOT TESTNET (CHAIN ID 968)</span>
+        </div>
       </div>
       <h1 class="cover-title">
-        Backr: Decentralized <span>All-or-Nothing</span> Crowdfunding
+        Backr: Decentralized <span class="highlight">All-or-Nothing</span> Crowdfunding
       </h1>
       <p class="cover-subtitle">
         Trustless, fee-free capital formation for creators and communities on the BOT Network. Zero platform taxes, 100% onchain integrity.

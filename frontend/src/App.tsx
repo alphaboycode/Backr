@@ -465,7 +465,7 @@ export function App() {
       <header className="app-header">
         <div className="header-content">
           <div className="logo-area" onClick={() => setActiveTab('all')}>
-            <div className="logo-mark">B</div>
+            <img src="/backr.jpeg" alt="Backr Logo" className="logo-img" />
             <div className="logo-text">
               <h1>Backr</h1>
               <p>All-or-Nothing Crowdfunding on BOT</p>
