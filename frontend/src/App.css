@@ -775,11 +775,259 @@
 .app-footer {
   margin-top: auto;
   border-top: 1px solid rgba(244, 63, 94, 0.2);
-  padding: 1.5rem;
-  text-align: center;
-  font-size: 0.8rem;
+  padding: 2.5rem 1.5rem 3rem;
+  background: rgba(18, 4, 8, 0.7);
+}
+
+.footer-container {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Section 1: Proof on bot mainnet */
+.footer-proof-section {
+  background: rgba(28, 8, 14, 0.75);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer-proof-section:hover {
+  border-color: rgba(244, 63, 94, 0.45);
+  box-shadow: 0 10px 28px rgba(225, 29, 72, 0.15);
+}
+
+.proof-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.proof-badge-dot {
+  color: #10a37f;
+  font-size: 0.85rem;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(16, 163, 127, 0.7);
+}
+
+.proof-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.proof-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.proof-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.proof-label {
   color: #fda4af;
-  background: rgba(18, 4, 8, 0.5);
+  font-weight: 600;
+  min-width: 140px;
+}
+
+.proof-value {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.proof-link {
+  color: #fb7185;
+  transition: all 0.2s ease;
+  word-break: break-all;
+}
+
+.proof-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.proof-link.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.825rem;
+}
+
+/* Section 2: Part of the Ecosystem */
+.ecosystem-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ecosystem-card {
+  width: 100%;
+  background: rgba(28, 8, 14, 0.85);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  border-radius: 20px;
+  padding: 2.25rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ecosystem-card:hover {
+  border-color: rgba(244, 63, 94, 0.5);
+  box-shadow: 0 14px 38px rgba(225, 29, 72, 0.2);
+}
+
+.ecosystem-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  color: #f43f5e;
+  text-transform: uppercase;
+  margin-bottom: 1.35rem;
+}
+
+.ecosystem-logo-outer {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.1rem;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, rgba(16, 163, 127, 0.1) 60%, transparent 80%);
+  border: 2px solid rgba(244, 63, 94, 0.35);
+  box-shadow: 0 0 22px rgba(244, 63, 94, 0.22), inset 0 0 14px rgba(16, 163, 127, 0.14);
+}
+
+.ecosystem-logo-inner {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #120407; /* Matches Backr app background exactly */
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.ecosystem-logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(16, 163, 127, 0.45));
+}
+
+.ecosystem-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.ecosystem-title-bot {
+  color: #f43f5e;
+  font-weight: 800;
+}
+
+.ecosystem-title-chain {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.ecosystem-tagline {
+  font-size: 14px;
+  color: #fda4af;
+  margin-bottom: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.ecosystem-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 1.35rem;
+  gap: 12px;
+}
+
+.ecosystem-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(244, 63, 94, 0.4), transparent);
+}
+
+.ecosystem-divider-diamond {
+  color: #f43f5e;
+  font-size: 10px;
+  line-height: 1;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px rgba(244, 63, 94, 0.6));
+}
+
+.ecosystem-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 1.5rem;
+}
+
+.ecosystem-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ecosystem-link:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.ecosystem-link:hover .ecosystem-icon {
+  stroke: #f43f5e;
+}
+
+.ecosystem-icon {
+  width: 17px;
+  height: 17px;
+  stroke: #fda4af;
+  transition: stroke 0.2s ease;
+}
+
+.ecosystem-meta {
+  font-size: 12px;
+  color: #9f1239;
+  letter-spacing: 0.3px;
+}
+
+.ecosystem-meta strong {
+  color: #fda4af;
+  font-weight: 600;
 }
 
 @media (max-width: 640px) {

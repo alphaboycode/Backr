@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { createWalletClient, custom } from 'viem';
-import { botTestnet } from './chain';
+import { botMainnet } from './chain';
 import { BACKR_ADDRESS, BACKR_ABI, publicClient } from './contracts/config';
 import { Campaign, FilterTab, TxState } from './types';
 import { parseBOT, shortenAddress, getCampaignStatus } from './utils';
@@ -9,7 +9,7 @@ import { CampaignDetailModal } from './components/CampaignDetailModal';
 import { CreateCampaignForm } from './components/CreateCampaignForm';
 import './App.css';
 
-const BOT_CHAIN_ID_HEX = '0x3c8'; // 968
+const BOT_CHAIN_ID_HEX = '0x2a5'; // 677
 
 export function App() {
   const [account, setAccount] = useState<`0x${string}` | undefined>(undefined);
@@ -32,9 +32,9 @@ export function App() {
     return () => clearInterval(timer);
   }, []);
 
-  const isWrongNetwork = chainId !== undefined && chainId !== botTestnet.id;
+  const isWrongNetwork = chainId !== undefined && chainId !== botMainnet.id;
 
-  // Switch or Add BOT Testnet
+  // Switch or Add BOT Mainnet
   const switchNetwork = async () => {
     if (!window.ethereum) return;
     try {
@@ -50,19 +50,19 @@ export function App() {
             params: [
               {
                 chainId: BOT_CHAIN_ID_HEX,
-                chainName: 'BOT Testnet',
+                chainName: 'BOT Mainnet',
                 nativeCurrency: {
                   name: 'BOT',
                   symbol: 'BOT',
                   decimals: 18,
                 },
-                rpcUrls: ['https://rpc.bohr.life'],
-                blockExplorerUrls: ['https://scan.bohr.life/'],
+                rpcUrls: ['https://rpc.botchain.ai'],
+                blockExplorerUrls: ['https://scan.botchain.ai/'],
               },
             ],
           });
         } catch (addError) {
-          console.error('Failed to add BOT Testnet:', addError);
+          console.error('Failed to add BOT Mainnet:', addError);
         }
       } else {
         console.error('Failed to switch network:', switchError);
@@ -210,7 +210,7 @@ export function App() {
 
       const goalWei = parseBOT(goalBOT);
       const walletClient = createWalletClient({
-        chain: botTestnet,
+        chain: botMainnet,
         transport: custom(window.ethereum),
       });
 
@@ -266,7 +266,7 @@ export function App() {
 
       const valueWei = parseBOT(amountBOT);
       const walletClient = createWalletClient({
-        chain: botTestnet,
+        chain: botMainnet,
         transport: custom(window.ethereum),
       });
 
@@ -329,7 +329,7 @@ export function App() {
       setTxState({ status: 'pending', action: 'Withdrawing funds...' });
 
       const walletClient = createWalletClient({
-        chain: botTestnet,
+        chain: botMainnet,
         transport: custom(window.ethereum),
       });
 
@@ -387,7 +387,7 @@ export function App() {
       setTxState({ status: 'pending', action: 'Claiming refund...' });
 
       const walletClient = createWalletClient({
-        chain: botTestnet,
+        chain: botMainnet,
         transport: custom(window.ethereum),
       });
 
@@ -476,7 +476,7 @@ export function App() {
             {/* Network Badge */}
             <div className={`network-badge ${isWrongNetwork ? 'wrong-network' : ''}`}>
               <span className="dot" />
-              <span>{isWrongNetwork ? 'Wrong Network' : 'BOT Testnet'}</span>
+              <span>{isWrongNetwork ? 'Wrong Network' : 'BOT Mainnet'}</span>
             </div>
 
             {/* Switch network CTA if wrong network */}
@@ -512,9 +512,9 @@ export function App() {
         {/* Wrong network alert banner */}
         {isWrongNetwork && (
           <div className="banner banner-warning">
-            <span>You are connected to an unsupported network. Please switch to BOT Testnet (Chain ID 968).</span>
+            <span>You are connected to an unsupported network. Please switch to BOT Mainnet (Chain ID 677).</span>
             <button className="btn btn-warning" onClick={switchNetwork}>
-              Switch to BOT Testnet
+              Switch to BOT Mainnet
             </button>
           </div>
         )}
@@ -533,12 +533,12 @@ export function App() {
                 {txState.hash && (
                   <div style={{ marginTop: '0.2rem' }}>
                     <a
-                      href={`https://scan.bohr.life/tx/${txState.hash}`}
+                      href={`https://scan.botchain.ai/tx/${txState.hash}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ fontSize: '0.8rem', textDecoration: 'underline' }}
                     >
-                      View on BohrScan ({shortenAddress(txState.hash)}) ↗
+                      View on BOTScan ({shortenAddress(txState.hash)}) ↗
                     </a>
                   </div>
                 )}
@@ -618,7 +618,7 @@ export function App() {
         {loading ? (
           <div className="empty-state">
             <span className="spinner" style={{ width: '32px', height: '32px', marginBottom: '1rem' }} />
-            <p>Loading campaigns from BOT Testnet...</p>
+            <p>Loading campaigns from BOT Mainnet...</p>
           </div>
         ) : filteredCampaigns.length === 0 ? (
           <div className="empty-state">
@@ -674,16 +674,128 @@ export function App() {
 
       {/* Footer */}
       <footer className="app-footer">
-        <div>Backr Crowdfunding Dapp • Deployed on BOT Testnet (Chain ID 968)</div>
-        <div style={{ marginTop: '0.4rem' }}>
-          Contract:{' '}
-          <a
-            href={`https://scan.bohr.life/address/${BACKR_ADDRESS}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {BACKR_ADDRESS}
-          </a>
+        <div className="footer-container">
+          {/* Section 1: Proof on bot mainnet */}
+          <div className="footer-proof-section">
+            <div className="proof-header">
+              <span className="proof-badge-dot">●</span>
+              <span className="proof-title">Proof on bot mainnet</span>
+            </div>
+            <div className="proof-grid">
+              <div className="proof-item">
+                <span className="proof-label">Chain id:</span>
+                <span className="proof-value">677</span>
+              </div>
+              <div className="proof-item">
+                <span className="proof-label">Contract:</span>
+                <a
+                  href={`https://scan.botchain.ai/address/${BACKR_ADDRESS}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="proof-link mono"
+                >
+                  {BACKR_ADDRESS}
+                </a>
+              </div>
+              <div className="proof-item">
+                <span className="proof-label">BOT Chain Website:</span>
+                <a
+                  href="https://www.botchain.ai/en/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="proof-link"
+                >
+                  https://www.botchain.ai/en/
+                </a>
+              </div>
+              <div className="proof-item">
+                <span className="proof-label">BOTScan explorer:</span>
+                <a
+                  href="https://scan.botchain.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="proof-link"
+                >
+                  https://scan.botchain.ai/
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 2: Part of the Ecosystem */}
+          <div className="ecosystem-section">
+            <div className="ecosystem-card">
+              <div className="ecosystem-badge">PART OF THE ECOSYSTEM</div>
+
+              <div className="ecosystem-logo-outer">
+                <div className="ecosystem-logo-inner">
+                  <img src="/bot-logo.svg" alt="BOT Chain Logo" className="ecosystem-logo-img" />
+                </div>
+              </div>
+
+              <div className="ecosystem-title">
+                <span className="ecosystem-title-bot">BOT</span>{' '}
+                <span className="ecosystem-title-chain">Chain</span>
+              </div>
+
+              <p className="ecosystem-tagline">Backed, funded, on chain</p>
+
+              <div className="ecosystem-divider">
+                <span className="ecosystem-divider-line" />
+                <span className="ecosystem-divider-diamond">◆</span>
+                <span className="ecosystem-divider-line" />
+              </div>
+
+              <div className="ecosystem-links">
+                <a
+                  href="https://www.botchain.ai/en/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ecosystem-link"
+                >
+                  <svg
+                    className="ecosystem-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                  <span>botchain.ai</span>
+                </a>
+
+                <a
+                  href="https://scan.botchain.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ecosystem-link"
+                >
+                  <svg
+                    className="ecosystem-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                  <span>Explorer</span>
+                </a>
+              </div>
+
+              <div className="ecosystem-meta">
+                &copy; 2026 <strong>BOT Chain</strong> &middot; Mainnet &middot; Chain ID <strong>677</strong>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

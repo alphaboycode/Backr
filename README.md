@@ -1,6 +1,6 @@
 # Backr 🚀
 
-A decentralized all-or-nothing crowdfunding dapp built with Foundry, Solidity, Vite, React, TypeScript, and viem on the **BOT Testnet**.
+A decentralized all-or-nothing crowdfunding dapp built with Foundry, Solidity, Vite, React, TypeScript, and viem on **BOT Chain**.
 
 Creators start campaigns with a target goal in native BOT and a duration (1–90 days). Backers pledge native BOT before the deadline.
 - If the goal is reached before the deadline: The creator can withdraw the full amount raised (including overfunding).
@@ -10,9 +10,19 @@ All campaign data and pledges are stored directly onchain as plain text. No IPFS
 
 ---
 
-## Deployed Contract
+## 🌐 Network Information & Deployed Contracts
 
-- **Network:** BOT Testnet
+### BOT Mainnet (Chain ID 677)
+- **Network Name:** BOT Mainnet
+- **Chain ID:** `677`
+- **RPC Endpoint:** `https://rpc.botchain.ai`
+- **Native Token:** BOT (150M Total Supply)
+- **Contract Address:** [`0x4EB9Ea45A18BE0fB34538Cdf4da80e1F5E360EB3`](https://scan.botchain.ai/address/0x4eb9ea45a18be0fb34538cdf4da80e1f5e360eb3)
+- **Deployment Transaction:** [`0x94844dbf5cd88e06d5036f59d755a711e88acf3268a453586b461b29087d422d`](https://scan.botchain.ai/tx/0x94844dbf5cd88e06d5036f59d755a711e88acf3268a453586b461b29087d422d)
+- **Verification Status:** Verified on [BOTScan](https://scan.botchain.ai/address/0x4eb9ea45a18be0fb34538cdf4da80e1f5e360eb3)
+
+### BOT Testnet (Chain ID 968)
+- **Network Name:** BOT Testnet
 - **Chain ID:** `968`
 - **RPC Endpoint:** `https://rpc.bohr.life`
 - **Contract Address:** [`0x4EB9Ea45A18BE0fB34538Cdf4da80e1F5E360EB3`](https://scan.bohr.life/address/0x4eb9ea45a18be0fb34538cdf4da80e1f5e360eb3)

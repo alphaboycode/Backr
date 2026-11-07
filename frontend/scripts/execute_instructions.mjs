@@ -2,13 +2,13 @@ import { createWalletClient, createPublicClient, http, parseEther, defineChain }
 import { privateKeyToAccount } from 'viem/accounts';
 import fs from 'fs';
 
-// BOT Testnet
-const botTestnet = defineChain({
-  id: 968,
-  name: 'BOT Testnet',
+// BOT Mainnet
+const botchainMainnet = defineChain({
+  id: 677,
+  name: 'BOT Mainnet',
   nativeCurrency: { name: 'BOT', symbol: 'BOT', decimals: 18 },
-  rpcUrls: { default: { http: ['https://rpc.bohr.life'] } },
-  blockExplorers: { default: { name: 'BohrScan', url: 'https://scan.bohr.life' } },
+  rpcUrls: { default: { http: ['https://rpc.botchain.ai'] } },
+  blockExplorers: { default: { name: 'BOTScan', url: 'https://scan.botchain.ai' } },
 });
 
 const BACKR_ADDRESS = JSON.parse(fs.readFileSync('./src/contracts/address.json', 'utf8')).address;
@@ -26,15 +26,15 @@ const w2 = privateKeyToAccount(getEnvVal('WALLET_2_PRIVATE_KEY'));
 const w3 = privateKeyToAccount(getEnvVal('WALLET_3_PRIVATE_KEY'));
 
 const publicClient = createPublicClient({
-  chain: botTestnet,
-  transport: http(),
+  chain: botchainMainnet,
+  transport: http('https://rpc.botchain.ai'),
 });
 
 function getWalletClient(account) {
   return createWalletClient({
     account,
-    chain: botTestnet,
-    transport: http(),
+    chain: botchainMainnet,
+    transport: http('https://rpc.botchain.ai'),
   });
 }
 
@@ -54,7 +54,7 @@ async function sendTx(walletClient, account, fnName, args, value = 0n) {
   const receipt = await publicClient.waitForTransactionReceipt({ hash });
   console.log(`  Confirmed in block ${receipt.blockNumber} (Status: ${receipt.status})`);
   await sleep(1500);
-  return { hash, blockNumber: receipt.blockNumber };
+  return { hash, blockNumber: Number(receipt.blockNumber), status: receipt.status };
 }
 
 async function run() {

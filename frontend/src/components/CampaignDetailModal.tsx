@@ -79,7 +79,7 @@ export const CampaignDetailModal: React.FC<Props> = ({
           <div className="detail-creator-row">
             <span>Created by:</span>
             <a
-              href={`https://scan.bohr.life/address/${campaign.creator}`}
+              href={`https://scan.botchain.ai/address/${campaign.creator}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontWeight: 600 }}
@@ -162,7 +162,7 @@ export const CampaignDetailModal: React.FC<Props> = ({
                 </p>
               ) : isWrongNetwork ? (
                 <p style={{ color: '#fde68a', fontSize: '0.875rem' }}>
-                  Please switch to BOT Testnet to pledge.
+                  Please switch to BOT Mainnet to pledge.
                 </p>
               ) : (
                 <form onSubmit={handlePledgeSubmit}>
